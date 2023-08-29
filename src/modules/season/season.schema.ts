@@ -48,14 +48,6 @@ export class Season {
   @ApiProperty()
   @Prop({ type: 'string', required: true, trim: true })
   description: string;
-
-  // previous
-  @ManyToOne(() => Series, (series) => series.season_id) // Establish the one-to-many relationship
-  series_id: Series[];
-
-  // next
-  @OneToMany(() => Episode, (episode) => episode.season_id)
-  episode_id: Episode[];
 }
 
 export const SeasonSchema = SchemaFactory.createForClass(Season);

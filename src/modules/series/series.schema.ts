@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
 import * as mongoose from 'mongoose';
 import {
   IsInt,
@@ -48,18 +48,11 @@ export class Series {
   @Prop({ type: 'string', required: true, trim: true })
   description: string;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Genre' }) // Correctly referencing the Genre schema
-  genre_id: Genre | mongoose.Types.ObjectId;
-
-  // @Prop({ type: Genre })
-  // genre_id: Genre;
-
-  // @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Genre' })
-  // genre_id: Genre;
-
-  // next
-  @OneToMany(() => Season, (season) => season.series_id)
-  season_id: Season[];
+  @Prop({
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Genre',
+  })
+  genre_id: Types.ObjectId;
 }
 
 export const SeriesSchema = SchemaFactory.createForClass(Series);

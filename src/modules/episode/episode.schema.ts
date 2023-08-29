@@ -55,9 +55,9 @@ export class Episode {
   // @ManyToOne(() => Season) // Use a string to reference the other class
   // season_id: Season;
 
-  @ManyToOne(() => Season, (season) => season.episode_id)
-  @JoinColumn({ name: 'series_id' })
-  season_id: Season;
+  // @ManyToOne(() => Season, (season) => season.episode_id)
+  // @JoinColumn({ name: 'series_id' })
+  // season_id: Season;
 }
 
 export const EpisodeSchema = SchemaFactory.createForClass(Episode);
